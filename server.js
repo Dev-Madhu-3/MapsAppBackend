@@ -4,9 +4,15 @@ const { open } = require("sqlite")
 const sqlite3 = require("sqlite3")
 const jwt = require("jsonwebtoken")
 const bcrypt = require("bcryptjs")
+const cors = require("cors")
 
 const app = express()
 app.use(express.json())
+app.use(cors({
+    origin: "*", // Allow all origins, or specify your frontend URL
+    methods: "GET,POST,PUT,DELETE",
+    credentials: true // Allow cookies if needed
+}))
 
 let db
 
