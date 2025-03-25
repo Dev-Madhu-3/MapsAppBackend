@@ -76,12 +76,12 @@ app.post("/login", async (req, res) => {
 
 app.get("/dashboard", authenticate, async (req, res) => {
     const { username } = req.user
-    const data = await db.get("SELECT mapdata FROM users WHERE username = ?", [username])
+    const data = await db.get("SELECT carddata FROM users WHERE username = ?", [username])
     res.status(200).send(data)
 })
 
 app.get("/map", authenticate, async (req, res) => {
     const { username } = req.user
-    const data = await db.get("SELECT carddata FROM users WHERE username = ?", [username])
+    const data = await db.get("SELECT mapdata FROM users WHERE username = ?", [username])
     res.status(200).send(data)
 })
